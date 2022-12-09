@@ -8,7 +8,7 @@ import ru.netology.domain.Player;
 import ru.netology.exception.AlreadyRegisteredException;
 import ru.netology.exception.NotRegisteredException;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameTest {
 
@@ -30,9 +30,9 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        ArrayList<Player> actual = game.getPlayers();
+        HashMap<String, Integer> expected = new HashMap<>();
+        expected.put(player1.getName(), player1.getStrength());
+        HashMap<String, Integer> actual = game.getPlayers();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -46,9 +46,9 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        ArrayList<Player> actual = game.getPlayers();
+        HashMap<String, Integer> expected = new HashMap<>();
+        expected.put(player1.getName(), player1.getStrength());
+        HashMap<String, Integer> actual = game.getPlayers();
 
         Assertions.assertEquals(expected, actual);
         Assertions.assertThrows(AlreadyRegisteredException.class, () -> {
@@ -67,8 +67,9 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        Player expected = player3;
-        Player actual = game.findByName("woogie");
+        HashMap<String, Integer> expected = new HashMap<>();
+        expected.put(player3.getName(), player3.getStrength());
+        HashMap<String, Integer> actual = game.findByName("woogie");
 
         Assertions.assertEquals(expected, actual);
     }
@@ -83,8 +84,8 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        Player expected = null;
-        Player actual = game.findByName(player6.getName());
+        HashMap<String, Integer> expected = null;
+        HashMap<String, Integer> actual = game.findByName(player6.getName());
 
         Assertions.assertEquals(expected, actual);
     }
