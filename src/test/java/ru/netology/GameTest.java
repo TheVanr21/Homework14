@@ -30,9 +30,9 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        HashMap<String, Integer> expected = new HashMap<>();
-        expected.put(player1.getName(), player1.getStrength());
-        HashMap<String, Integer> actual = game.getPlayers();
+        HashMap<String, Player> expected = new HashMap<>();
+        expected.put(player1.getName(), player1);
+        HashMap<String, Player> actual = game.getPlayers();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -46,9 +46,9 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        HashMap<String, Integer> expected = new HashMap<>();
-        expected.put(player1.getName(), player1.getStrength());
-        HashMap<String, Integer> actual = game.getPlayers();
+        HashMap<String, Player> expected = new HashMap<>();
+        expected.put(player1.getName(), player1);
+        HashMap<String, Player> actual = game.getPlayers();
 
         Assertions.assertEquals(expected, actual);
         Assertions.assertThrows(AlreadyRegisteredException.class, () -> {
@@ -67,9 +67,8 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        HashMap<String, Integer> expected = new HashMap<>();
-        expected.put(player3.getName(), player3.getStrength());
-        HashMap<String, Integer> actual = game.findByName("woogie");
+        Player expected = player3;
+        Player actual = game.findByName("woogie");
 
         Assertions.assertEquals(expected, actual);
     }
@@ -84,8 +83,8 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        HashMap<String, Integer> expected = null;
-        HashMap<String, Integer> actual = game.findByName(player6.getName());
+        Player expected = null;
+        Player actual = game.findByName(player6.getName());
 
         Assertions.assertEquals(expected, actual);
     }
