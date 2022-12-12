@@ -4,19 +4,19 @@ import ru.netology.domain.Player;
 import ru.netology.exception.AlreadyRegisteredException;
 import ru.netology.exception.NotRegisteredException;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
 
-    private ArrayList<Player> players = new ArrayList<>();
+    private HashMap<String, Player> players = new HashMap<>();
 
-    public ArrayList<Player> getPlayers() {
+    public HashMap<String, Player> getPlayers() {
         return players;
     }
 
     public void register(Player player) {
         if (findByName(player.getName()) == null) {
-            players.add(player);
+            players.put(player.getName(), player);
         } else {
             throw new AlreadyRegisteredException(player.getName());
         }
@@ -43,11 +43,6 @@ public class Game {
     }
 
     public Player findByName(String playerName) {
-        for (Player player : players) {
-            if (player.getName().equals(playerName)) {
-                return player;
-            }
-        }
-        return null;
+        return players.getOrDefault(playerName, null);
     }
 }

@@ -8,7 +8,7 @@ import ru.netology.domain.Player;
 import ru.netology.exception.AlreadyRegisteredException;
 import ru.netology.exception.NotRegisteredException;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameTest {
 
@@ -30,9 +30,9 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        ArrayList<Player> actual = game.getPlayers();
+        HashMap<String, Player> expected = new HashMap<>();
+        expected.put(player1.getName(), player1);
+        HashMap<String, Player> actual = game.getPlayers();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -46,9 +46,9 @@ public class GameTest {
             //ex.printStackTrace();
         }
 
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        ArrayList<Player> actual = game.getPlayers();
+        HashMap<String, Player> expected = new HashMap<>();
+        expected.put(player1.getName(), player1);
+        HashMap<String, Player> actual = game.getPlayers();
 
         Assertions.assertEquals(expected, actual);
         Assertions.assertThrows(AlreadyRegisteredException.class, () -> {
